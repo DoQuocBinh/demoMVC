@@ -7,6 +7,8 @@ const app = express()
 
 app.set('view engine', 'hbs')
 
+app.use(express.static('public'))
+
 app.use(express.urlencoded({ extended: true }))
 app.use(session({ secret: '124447yd@@$%%#', cookie: { maxAge: 60000 }, saveUninitialized: false, resave: false }))
 
@@ -36,7 +38,7 @@ app.get('/login', (req, res) => {
 })
 
 
-const adminController = require('./admin')
+const adminController = require('./controllers/admin')
 
 app.use('/admin', adminController)
 
